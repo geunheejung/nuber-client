@@ -16,9 +16,13 @@ const getContextConfig = () => {
 const initalState = {
   defaults: {
     auth: {
-      __typename: 'Auth',
+      __typename: TYPE_NAME.AUTH,
       isLoggedIn: !!tokenService.getToken(),
     },
+    test: {
+      __typename: 'Test',
+      sayHello: 'hello my name',
+    }
   },
   resolvers: {
     Mutation: {

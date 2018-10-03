@@ -6,5 +6,13 @@ export const IS_LOGGED_IN = gql`
         auth {
             isLoggedIn @client
         }
+    },
+`;
+
+export const SAY_HELLO = gql`
+    {
+        test {
+            sayHello @client
+        }
     }
 `;

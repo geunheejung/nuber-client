@@ -1,9 +1,12 @@
 import React from "react";
 import { graphql } from "react-apollo";
-import { IS_LOGGED_IN } from "./AppQueries";
+import { SAY_HELLO } from "./AppQueries";
 
-const AppContainer = ({ data }) => (
-    <div>{JSON.stringify(data)}</div>
-);
+const AppContainer = (props) => {
+    console.log(props.data.test.sayHello);
+    return (
+        <div>{JSON.stringify(props.data)}</div>
+    )
+}
 
-export default graphql(IS_LOGGED_IN)(AppContainer);
+export default graphql(SAY_HELLO)(AppContainer);
