@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { ApolloProvider } from 'react-apollo';
-import apolloClient from './apolloClient';
-import App from './App';
+import apolloClient from './apollo';
+import App from './components/App';
 
 ReactDOM.render(
   <ApolloProvider client={apolloClient}>
