@@ -8,6 +8,7 @@ var react_dom_1 = __importDefault(require("react-dom"));
 var react_apollo_1 = require("react-apollo");
 var apollo_1 = __importDefault(require("./apollo"));
 var App_1 = __importDefault(require("./components/App"));
+require("./global-styles");
 react_dom_1.default.render(react_1.default.createElement(react_apollo_1.ApolloProvider, { client: apollo_1.default },
     react_1.default.createElement(App_1.default, null)), document.getElementById('root'));
 //# sourceMappingURL=index.js.map

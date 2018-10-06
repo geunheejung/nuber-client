@@ -9,7 +9,7 @@ import {
 
 import AddPlace from '../../Routes/AddPlace';
 import EditAccount from '../../Routes/EditAccount';
-import Home from '../../Routes/Home';
+// import Home from '../../Routes/Home';
 import SocialLogin from '../../Routes/SocialLogin';
 import Login from '../../Routes/Login';
 import PhoneLogin from '../../Routes/PhoneLogin';
@@ -37,13 +37,15 @@ const LoggedInRoutes: React.SFC = () => {
 const LoggedOutRoutes: React.SFC = () => {
   return (
     <Switch>
-      <Route exact={true} path="/" component={Home} />
-      <Route  path="/ride" component={Ride} />
+      <Route exact={true} path="/" component={Login} />
+      <Route path="/ride" component={Ride} />
       <Route path="/edit-account" component={EditAccount} />
       <Route path="/settings" component={Settings} />
       <Route path="/places" component={Places} />
       <Route path="/add-places" component={AddPlace} />
       <Route path="/find-address" component={FindAddress} />
+      <Route path="/social-login" component={SocialLogin} />  
+      <Route path="/phone-login" component={PhoneLogin} />
       <Redirect from='*' to='/' />
     </Switch>
   )

@@ -54,9 +54,13 @@ var getContextConfig = function () {
 var initalState = {
     defaults: {
         auth: {
-            __typename: 'Auth',
+            __typename: TYPE_NAME.AUTH,
             isLoggedIn: !!tokenService_1.default.getToken(),
         },
+        test: {
+            __typename: 'Test',
+            sayHello: 'hello my name',
+        }
     },
     resolvers: {
         Mutation: {

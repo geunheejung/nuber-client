@@ -27,6 +27,7 @@
     "apollo-boost": "^0.1.16",
     "graphql": "^14.0.2",
     "react-apollo": "^2.2.0",
+    "react-helmet": "^5.2.0",
     "typescript": "^3.0.3"
   }
 }

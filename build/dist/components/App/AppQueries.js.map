@@ -1,1 +1,1 @@
-{"version":3,"file":"AppQueries.js","sourceRoot":"","sources":["../../../../src/components/App/AppQueries.ts"],"names":[],"mappings":";;;;;;AAAA,kCAAkC;AAClC,6CAAmC;AAAA,CAAC;AAGvB,QAAA,YAAY,GAAG,kBAAG,iJAAA,8EAM9B,KAAC"}
+{"version":3,"file":"AppQueries.js","sourceRoot":"","sources":["../../../../src/components/App/AppQueries.ts"],"names":[],"mappings":";;;;;;AAAA,kCAAkC;AAClC,6CAAmC;AAAA,CAAC;AAEvB,QAAA,YAAY,GAAG,kBAAG,iJAAA,8EAM9B,KAAC;AAEW,QAAA,SAAS,GAAG,kBAAG,8IAAA,2EAM3B,KAAC"}

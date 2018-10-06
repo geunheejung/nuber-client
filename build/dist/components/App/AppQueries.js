@@ -7,6 +7,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // graphql tags들을 입력하는 걸 가능하게 해준다.
 var apollo_boost_1 = require("apollo-boost");
 ;
-exports.IS_LOGGED_IN = apollo_boost_1.gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    {\n        auth: {\n            isLoggedIn @client\n        }\n    }\n"], ["\n    {\n        auth: {\n            isLoggedIn @client\n        }\n    }\n"])));
-var templateObject_1;
+exports.IS_LOGGED_IN = apollo_boost_1.gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    {\n        auth {\n            isLoggedIn @client\n        }\n    },\n"], ["\n    {\n        auth {\n            isLoggedIn @client\n        }\n    },\n"])));
+exports.SAY_HELLO = apollo_boost_1.gql(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n    {\n        test {\n            sayHello @client\n        }\n    }\n"], ["\n    {\n        test {\n            sayHello @client\n        }\n    }\n"])));
+var templateObject_1, templateObject_2;
 //# sourceMappingURL=AppQueries.js.map
