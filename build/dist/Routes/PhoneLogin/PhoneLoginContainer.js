@@ -17,6 +17,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importDefault(require("react"));
+var react_toastify_1 = require("react-toastify");
 var PhoneLogiPresenter_1 = __importDefault(require("./PhoneLogiPresenter"));
 var PhoneLoginContainer = /** @class */ (function (_super) {
     __extends(PhoneLoginContainer, _super);
@@ -36,7 +37,14 @@ var PhoneLoginContainer = /** @class */ (function (_super) {
         _this.onSubmit = function (event) {
             event.preventDefault();
             var _a = _this.state, countryCode = _a.countryCode, phoneNumber = _a.phoneNumber;
-            console.log('countryCode, phoneNumber :', countryCode, phoneNumber);
+            var phone = "" + countryCode + phoneNumber;
+            var isValid = /^\+[1-9]{1}[0-9]{7,11}$/.test(phone);
+            if (isValid) {
+                return;
+            }
+            else {
+                react_toastify_1.toast.error('Please write a valid phone number');
+            }
         };
         return _this;
     }

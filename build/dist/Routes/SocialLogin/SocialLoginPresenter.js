@@ -13,7 +13,7 @@ var BackArrow_1 = __importDefault(require("../../components/BackArrow"));
 var typed_componets_1 = __importDefault(require("../../typed-componets"));
 var Container = typed_componets_1.default.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  margin-top: 30px;\n  padding: 50px 20px;\n"], ["\n  margin-top: 30px;\n  padding: 50px 20px;\n"])));
 var Title = typed_componets_1.default.h2(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  font-size: 25px;\n  margin-bottom: 40px;\n"], ["\n  font-size: 25px;\n  margin-bottom: 40px;\n"])));
-var Link = typed_componets_1.default.span(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  display: flex;\n  align-items: center;\n"], ["\n  display: flex;\n  align-items: center;\n"])));
+var Link = typed_componets_1.default.span(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  display: flex;\n  align-items: center;\n  cursor: pointer;\n"], ["\n  display: flex;\n  align-items: center;\n  cursor: pointer;\n"])));
 var Icon = typed_componets_1.default.span(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n  margin-right: 10px;\n"], ["\n  margin-right: 10px;\n"])));
 var BackArrowExtended = typed_componets_1.default(BackArrow_1.default)(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n  position: absolute;\n  top: 20px;\n  left: 20px;\n"], ["\n  position: absolute;\n  top: 20px;\n  left: 20px;\n"])));
 var SocialLoginPresenter = function () { return (react_1.default.createElement(Container, null,
