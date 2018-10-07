@@ -5,11 +5,12 @@ import { RouteComponentProps } from "react-router-dom";
 import VerifyPhonePresenter from "./VerifyPhonePresenter";
 import { verifyPhone, verifyPhoneVariables } from "../../types/api";
 import { VERIFY_PHONE } from "./VerifyPhoneQueries";
+import { toast } from "react-toastify";
 
 interface IProps extends RouteComponentProps<any> {}
 
 interface IState {
-  key: string;
+  verificationKey: string;
   phoneNumber: string;
 }
 
@@ -26,7 +27,7 @@ class VerifyPhoneContainer extends React.Component<IProps, IState> {
     }
 
     this.state = {
-      key: '',
+      verificationKey: '',
       phoneNumber: props.location.state.phone
     }
   }
@@ -42,19 +43,29 @@ class VerifyPhoneContainer extends React.Component<IProps, IState> {
   }
 
   public render() {
-    const { key, phoneNumber } = this.state;
+    const { verificationKey, phoneNumber } = this.state;
     return (
       <VerifyMutation
         mutation={VERIFY_PHONE}
         variables={{
-          key,
+          key: verificationKey,
           phoneNumber
+        }}
+        onCompleted={(data) => {
+          const { CompletePhoneVerification } = data;
+          if (CompletePhoneVerification.ok) {
+            toast.success(`You're verified, loggin in now`);
+          } else {
+            toast.error(CompletePhoneVerification.error);
+          }
         }}
       >
         {(mutation, { loading }) => (
           <VerifyPhonePresenter 
+            onSubmit={mutation}
             onChange={this.onInputChange}
-            key={key}
+            verificationKey={verificationKey}
+            loading={loading}
           />
         )}
       </VerifyMutation>
