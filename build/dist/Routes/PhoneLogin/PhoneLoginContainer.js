@@ -20,7 +20,7 @@ var react_1 = __importDefault(require("react"));
 var react_apollo_1 = require("react-apollo");
 var react_toastify_1 = require("react-toastify");
 var PhoneLogiPresenter_1 = __importDefault(require("./PhoneLogiPresenter"));
-var PhoneQueried_1 = require("./PhoneQueried");
+var PhoneQueries_queries_1 = require("./PhoneQueries.queries");
 // Mutation클래스의 제네릭의 첫번째자리는 mutation이 반환하는 데이터에 대한것.
 var PhoneSignInMutation = /** @class */ (function (_super) {
     __extends(PhoneSignInMutation, _super);
@@ -49,7 +49,7 @@ var PhoneLoginContainer = /** @class */ (function (_super) {
     PhoneLoginContainer.prototype.render = function () {
         var _this = this;
         var _a = this.state, countryCode = _a.countryCode, phoneNumber = _a.phoneNumber;
-        return (react_1.default.createElement(PhoneSignInMutation, { mutation: PhoneQueried_1.PHONE_SIGN_IN, variables: {
+        return (react_1.default.createElement(PhoneSignInMutation, { mutation: PhoneQueries_queries_1.PHONE_SIGN_IN, variables: {
                 phoneNumber: "" + countryCode + phoneNumber
             } }, function (mutation, _a) {
             var loading = _a.loading;

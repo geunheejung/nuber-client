@@ -12,7 +12,7 @@ import EditAccount from '../../Routes/EditAccount';
 // import Home from '../../Routes/Home';
 import SocialLogin from '../../Routes/SocialLogin';
 import Login from '../../Routes/Login';
-import PhoneLogin from '../../Routes/PhoneLogin';
+import PhoneLogin from '../../Routes/PhoneLogin/index';
 import Places from '../../Routes/Places';
 import Ride from '../../Routes/Ride';
 import Settings from '../../Routes/Settings';
