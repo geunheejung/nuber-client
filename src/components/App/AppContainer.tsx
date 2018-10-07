@@ -2,7 +2,7 @@ import React from "react";
 import {graphql} from "react-apollo";
 import {toast, ToastContainer} from 'react-toastify';
 import "react-toastify/dist/ReactToastify.min.css";
-import {IS_LOGGED_IN} from "./AppQueries";
+import {IS_LOGGED_IN} from "./AppQueries.local";
 import {ThemeProvider} from '../../typed-componets';
 import theme from '../../theme';
 import AppPresenter from './AppPresenter';

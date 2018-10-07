@@ -2075,7 +2075,7 @@
             "deprecationReason": null
           },
           {
-            "name": "CompletePhopneNumberVerification",
+            "name": "CompletePhoneVerification",
             "description": "",
             "args": [
               {
@@ -2112,7 +2112,7 @@
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "CompletePhopneNumberVerificationResponse",
+                "name": "CompletePhoneVerificationResponse",
                 "ofType": null
               }
             },
@@ -2881,7 +2881,7 @@
       },
       {
         "kind": "OBJECT",
-        "name": "CompletePhopneNumberVerificationResponse",
+        "name": "CompletePhoneVerificationResponse",
         "description": "",
         "fields": [
           {
