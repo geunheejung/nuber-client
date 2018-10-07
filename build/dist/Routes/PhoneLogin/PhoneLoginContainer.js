@@ -17,8 +17,18 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importDefault(require("react"));
+var react_apollo_1 = require("react-apollo");
 var react_toastify_1 = require("react-toastify");
 var PhoneLogiPresenter_1 = __importDefault(require("./PhoneLogiPresenter"));
+var PhoneQueried_1 = require("./PhoneQueried");
+// Mutation클래스의 제네릭의 첫번째자리는 mutation이 반환하는 데이터에 대한것.
+var PhoneSignInMutation = /** @class */ (function (_super) {
+    __extends(PhoneSignInMutation, _super);
+    function PhoneSignInMutation() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    return PhoneSignInMutation;
+}(react_apollo_1.Mutation));
 var PhoneLoginContainer = /** @class */ (function (_super) {
     __extends(PhoneLoginContainer, _super);
     function PhoneLoginContainer() {
@@ -34,23 +44,27 @@ var PhoneLoginContainer = /** @class */ (function (_super) {
                 _a[name] = value,
                 _a));
         };
-        _this.onSubmit = function (event) {
-            event.preventDefault();
-            var _a = _this.state, countryCode = _a.countryCode, phoneNumber = _a.phoneNumber;
-            var phone = "" + countryCode + phoneNumber;
-            var isValid = /^\+[1-9]{1}[0-9]{7,11}$/.test(phone);
-            if (isValid) {
-                return;
-            }
-            else {
-                react_toastify_1.toast.error('Please write a valid phone number');
-            }
-        };
         return _this;
     }
     PhoneLoginContainer.prototype.render = function () {
+        var _this = this;
         var _a = this.state, countryCode = _a.countryCode, phoneNumber = _a.phoneNumber;
-        return (react_1.default.createElement(PhoneLogiPresenter_1.default, { countryCode: countryCode, phoneNumber: phoneNumber, onInputChage: this.onInputChage, onSubmit: this.onSubmit }));
+        return (react_1.default.createElement(PhoneSignInMutation, { mutation: PhoneQueried_1.PHONE_SIGN_IN, variables: {
+                phoneNumber: "" + countryCode + phoneNumber
+            } }, function (mutation, _a) {
+            var loading = _a.loading;
+            var onSubmit = function (event) {
+                event.preventDefault();
+                var isValid = /^\+[1-9]{1}[0-9]{7,11}$/.test("" + countryCode + phoneNumber);
+                if (isValid) {
+                    mutation();
+                }
+                else {
+                    react_toastify_1.toast.error("Please write a valid phone number");
+                }
+            };
+            return (react_1.default.createElement(PhoneLogiPresenter_1.default, { countryCode: countryCode, phoneNumber: phoneNumber, onInputChage: _this.onInputChage, onSubmit: onSubmit, loading: loading }));
+        }));
     };
     return PhoneLoginContainer;
 }(react_1.default.Component));

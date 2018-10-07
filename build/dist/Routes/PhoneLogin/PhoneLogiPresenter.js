@@ -21,7 +21,7 @@ var CountryOption = typed_componets_1.default.option(templateObject_5 || (templa
 var Form = typed_componets_1.default.form(templateObject_6 || (templateObject_6 = __makeTemplateObject([""], [""])));
 var Button = typed_componets_1.default.button(templateObject_7 || (templateObject_7 = __makeTemplateObject(["\n  box-shadow: 0 18px 35px rgba(50, 50, 93, 0.1), 0 8px 15px rgba(0, 0, 0, 0.07);\n  background-color: black;\n  color: white;\n  padding: 20px;\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  position: absolute;\n  bottom: 50px;\n  right: 50px;\n  cursor: pointer;\n"], ["\n  box-shadow: 0 18px 35px rgba(50, 50, 93, 0.1), 0 8px 15px rgba(0, 0, 0, 0.07);\n  background-color: black;\n  color: white;\n  padding: 20px;\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  position: absolute;\n  bottom: 50px;\n  right: 50px;\n  cursor: pointer;\n"])));
 var PhoneLoginPresenter = function (_a) {
-    var countryCode = _a.countryCode, phoneNumber = _a.phoneNumber, onInputChage = _a.onInputChage, onSubmit = _a.onSubmit;
+    var countryCode = _a.countryCode, phoneNumber = _a.phoneNumber, loading = _a.loading, onInputChage = _a.onInputChage, onSubmit = _a.onSubmit;
     return (react_1.default.createElement(Container, null,
         react_1.default.createElement(react_helmet_1.default, null,
             react_1.default.createElement("title", null, "Phone Login | Number")),
@@ -35,10 +35,10 @@ var PhoneLoginPresenter = function (_a) {
             country.dial_code,
             ")")); })),
         react_1.default.createElement(Form, { onSubmit: onSubmit },
-            react_1.default.createElement(Input_1.default, { placeholder: "053 690 2129", value: phoneNumber, name: "phoneNumber", onChange: onchange }),
-            react_1.default.createElement(Button, null,
-                react_1.default.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24", fill: "white" },
-                    react_1.default.createElement("path", { d: "M7.33 24l-2.83-2.829 9.339-9.175-9.339-9.167 2.83-2.829 12.17 11.996z" }))))));
+            react_1.default.createElement(Input_1.default, { placeholder: "053 690 2129", value: phoneNumber, name: "phoneNumber", onChange: onInputChage }),
+            react_1.default.createElement(Button, null, loading ? (react_1.default.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24" },
+                react_1.default.createElement("path", { d: "M13.75 22c0 .966-.783 1.75-1.75 1.75s-1.75-.784-1.75-1.75.783-1.75 1.75-1.75 1.75.784 1.75 1.75zm-1.75-22c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2zm10 10.75c.689 0 1.249.561 1.249 1.25 0 .69-.56 1.25-1.249 1.25-.69 0-1.249-.559-1.249-1.25 0-.689.559-1.25 1.249-1.25zm-22 1.25c0 1.105.896 2 2 2s2-.895 2-2c0-1.104-.896-2-2-2s-2 .896-2 2zm19-8c.551 0 1 .449 1 1 0 .553-.449 1.002-1 1-.551 0-1-.447-1-.998 0-.553.449-1.002 1-1.002zm0 13.5c.828 0 1.5.672 1.5 1.5s-.672 1.501-1.502 1.5c-.826 0-1.498-.671-1.498-1.499 0-.829.672-1.501 1.5-1.501zm-14-14.5c1.104 0 2 .896 2 2s-.896 2-2.001 2c-1.103 0-1.999-.895-1.999-2s.896-2 2-2zm0 14c1.104 0 2 .896 2 2s-.896 2-2.001 2c-1.103 0-1.999-.895-1.999-2s.896-2 2-2z" }))) : (react_1.default.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24", fill: "white" },
+                react_1.default.createElement("path", { d: "M7.33 24l-2.83-2.829 9.339-9.175-9.339-9.167 2.83-2.829 12.17 11.996z" })))))));
 };
 exports.default = PhoneLoginPresenter;
 var templateObject_1, templateObject_2, templateObject_3, templateObject_4, templateObject_5, templateObject_6, templateObject_7;

@@ -1,12 +1,21 @@
 import React from "react";
+import {Mutation} from "react-apollo";
 import {RouteComponentProps} from 'react-router-dom';
-import { toast } from "react-toastify";
+import {toast} from "react-toastify";
 import PhoneLoginPresenter from './PhoneLogiPresenter';
+import {PHONE_SIGN_IN} from "./PhoneQueried";
 
 interface IState {
   countryCode: string;
   phoneNumber: string;
 }
+
+interface IMutation {
+  phoneNumber: string;
+}
+
+// Mutation클래스의 제네릭의 첫번째자리는 mutation이 반환하는 데이터에 대한것.
+class PhoneSignInMutation extends Mutation<any, IMutation> {}
 
 class PhoneLoginContainer extends React.Component<RouteComponentProps<any>,
   IState> {
@@ -15,40 +24,49 @@ class PhoneLoginContainer extends React.Component<RouteComponentProps<any>,
     phoneNumber: '12345'
   }
 
-  public onInputChage: React.ChangeEventHandler<
-    HTMLInputElement | HTMLSelectElement
-  > = event => {
+  public onInputChage: React.ChangeEventHandler<HTMLInputElement | HTMLSelectElement> = event => {
     const {
-      target: { name, value }
+      target: {name, value}
     } = event;
     this.setState({
       [name]: value
     } as any);
   }
 
-  public onSubmit: React.FormEventHandler<HTMLFormElement> = event => {
-    event.preventDefault();
-
-    const { countryCode, phoneNumber } = this.state;
-    const phone = `${countryCode}${phoneNumber}`;
-    const isValid = /^\+[1-9]{1}[0-9]{7,11}$/.test(phone);
-
-    if (isValid) {
-      return;
-    } else {
-      toast.error('Please write a valid phone number');
-    }
-  }
-
   public render() {
-    const { countryCode, phoneNumber } = this.state;
+    const {countryCode, phoneNumber} = this.state;
     return (
-      <PhoneLoginPresenter
-        countryCode={countryCode}
-        phoneNumber={phoneNumber}
-        onInputChage={this.onInputChage}
-        onSubmit={this.onSubmit}
-      />
+      <PhoneSignInMutation
+        mutation={PHONE_SIGN_IN}
+        variables={{
+          phoneNumber: `${countryCode}${phoneNumber}`
+        }}
+      >
+        {(mutation, {loading}) => {
+          const onSubmit: React.FormEventHandler<HTMLFormElement> = event => {
+            event.preventDefault();
+            const isValid = /^\+[1-9]{1}[0-9]{7,11}$/.test(
+              `${countryCode}${phoneNumber}`
+            );
+            if (isValid) {
+              mutation();
+            } else {
+              toast.error("Please write a valid phone number");
+            }
+          };
+
+          return (
+            <PhoneLoginPresenter
+              countryCode={countryCode}
+              phoneNumber={phoneNumber}
+              onInputChage={this.onInputChage}
+              onSubmit={onSubmit}
+              loading={loading}
+            />
+          )
+        }}
+      </PhoneSignInMutation>
+
     )
   }
 }
