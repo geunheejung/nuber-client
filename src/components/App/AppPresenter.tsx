@@ -23,7 +23,7 @@ interface IProps {
   isLoggedIn: boolean;
 }
 
-const LoggedInRoutes: React.SFC = () => {
+const LoggedOutRoutes: React.SFC = () => {
   return (
     <Switch>
       <Route exact={true} path="/" component={Login} />
@@ -34,7 +34,7 @@ const LoggedInRoutes: React.SFC = () => {
   )
 }
 
-const LoggedOutRoutes: React.SFC = () => {
+const LoggedInRoutes: React.SFC = () => {
   return (
     <Switch>
       <Route exact={true} path="/" component={Login} />
@@ -44,8 +44,6 @@ const LoggedOutRoutes: React.SFC = () => {
       <Route path="/places" component={Places} />
       <Route path="/add-places" component={AddPlace} />
       <Route path="/find-address" component={FindAddress} />
-      <Route path="/social-login" component={SocialLogin} />  
-      <Route path="/phone-login" component={PhoneLogin} />
       <Redirect from='*' to='/' />
     </Switch>
   )
