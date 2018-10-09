@@ -3,7 +3,6 @@ import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props
 import Helmet from "react-helmet";
 import BackArrow from '../../components/BackArrow';
 import styled from "../../typed-componets";
-import { MutationFn } from "react-apollo";
 
 const Container = styled.div`
   margin-top: 30px;
@@ -28,7 +27,7 @@ const BackArrowExtended = styled(BackArrow)`
 `;
 
 interface IProps {
-  loginCallback: MutationFn;
+  loginCallback: (response) => void;
 }
 
 const SocialLoginPresenter: React.SFC<IProps> = ({ loginCallback }) => (
@@ -39,9 +38,9 @@ const SocialLoginPresenter: React.SFC<IProps> = ({ loginCallback }) => (
     <Title>Choose an account</Title>
     <BackArrowExtended backTo={"/"} />
     <FacebookLogin
-      appId="100009310110875"
+      appId="2329067347107962"
       autoLoad={true}
-      fields="name,email,picture"
+      fields="name,first_name,last_name,email"
       // 페이스북에서 사용자의 정보를 받고 난 이후 callBack
       // Click -> Login -> FacebookConnectMutation
       callback={loginCallback}

@@ -4,6 +4,7 @@ import SocialLoginPresenter from "./SocialLoginPresenter";
 import { Mutation } from "react-apollo";
 import { facebookConnect, facebookConnectVariables } from '../../types/api';
 import { FACEBOOK_CONNECT } from "./SocialLoginQueries";
+import { toast } from "react-toastify";
 
 class LoginMutation extends Mutation<
   facebookConnect,
@@ -25,24 +26,30 @@ interface IProps extends RouteComponentProps<any> {
 
 
 class SocialLoginContainer extends React.Component<IProps, IState> {
-  public mutation: any;
+  public facebookMutation: any;
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      firstName: '',
+      lastName: '',
+      email: '',
+      fbId: ''
+    }
+  }
+
   public render() {
-    const { firstName, lastName, email, fbId } = this.state;
+    // const { firstName, lastName, email, fbId } = this.state;
     return (
       <LoginMutation
         mutation={FACEBOOK_CONNECT}
-        variables={{
-          firstName,
-          lastName,
-          email,
-          fbId
-        }}
       >
-        {(facebookConnectFn, { loading }) => {
-          this.mutation = facebookConnectFn;
+        {(facebookMutation, { loading }) => {
+          this.facebookMutation = facebookMutation;
           return (
             <SocialLoginPresenter
-              loginCallback={facebookConnectFn}
+              loginCallback={this.loginCallBack}
             />
           )
         }}
@@ -51,12 +58,29 @@ class SocialLoginContainer extends React.Component<IProps, IState> {
     )
   }
 
-  public callback = (fData) => {
-    this.setState({
-      email: fData.email,
-    }, () => {
-      this.mutation();
-    })
+  public loginCallBack = (response) => {
+    const {
+      name,
+      first_name,
+      last_name,
+      email,
+      id,
+      accessToken
+    } = response;
+
+    if (accessToken) {
+      this.facebookMutation({
+        variables: {
+          firstName: first_name,
+          lastName: last_name,
+          email,
+          fbId: id,
+        }
+      });
+      toast.success(`Welcome ${name}! 👐`)
+    } else {
+      toast.error('Could not log you in 😰');
+    }
   }
 }
 
