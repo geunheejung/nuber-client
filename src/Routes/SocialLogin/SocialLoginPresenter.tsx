@@ -39,7 +39,7 @@ const SocialLoginPresenter: React.SFC<IProps> = ({ loginCallback }) => (
     <BackArrowExtended backTo={"/"} />
     <FacebookLogin
       appId="2329067347107962"
-      autoLoad={true}
+      autoLoad={false}
       fields="name,first_name,last_name,email"
       // 페이스북에서 사용자의 정보를 받고 난 이후 callBack
       // Click -> Login -> FacebookConnectMutation
