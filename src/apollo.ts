@@ -42,9 +42,11 @@ const initalState = {
 
         cache.writeData({
           data: {
-            __typename: TYPE_NAME.AUTH,
-            isLoggedIn: false,
-          },
+            auth: {
+              __typename: TYPE_NAME.AUTH,
+              isLoggedIn: false,
+            },
+          }
         });
 
         return null;
